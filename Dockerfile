@@ -2,7 +2,7 @@ FROM php:7.3-alpine
 
 LABEL maintainer="ohartl <hello@ohartl.de>"
 
-ARG DEPTRAC_VERSION=0.4.0
+ARG DEPTRAC_VERSION=0.5.0
 
 RUN apk add --update --no-cache graphviz ttf-freefont \
     && rm -rf /var/cache/apk/* /var/tmp/* /tmp/* \
