@@ -4,7 +4,7 @@ LABEL maintainer="ohartl <hello@ohartl.de>"
 
 ARG DEPTRAC_VERSION=0.6.0
 
-RUN apk add --update --no-cache graphviz ttf-freefont \
+RUN apk add --update --no-cache gnupg graphviz ttf-freefont \
     && rm -rf /var/cache/apk/* /var/tmp/* /tmp/* \
     && cd /tmp \
     && curl -LS https://github.com/sensiolabs-de/deptrac/releases/download/$DEPTRAC_VERSION/deptrac.phar -o deptrac.phar \
