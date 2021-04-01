@@ -47,3 +47,11 @@ jobs:
         file: './Dockerfile'
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.IMAGE_NAME }}:latest
+    - name: Docker Hub Description
+      if: github.event_name != 'pull_request'
+      uses: peter-evans/dockerhub-description@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        repository: ohartl/deptrac
+        short-description: ${{ github.event.repository.description }}
