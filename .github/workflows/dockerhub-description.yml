@@ -1,0 +1,23 @@
+name: Update Docker Hub description
+
+env:
+  IMAGE_NAME: ohartl/deptrac
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  update-description:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Update Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: ${{ env.IMAGE_NAME }}
+          short-description: ${{ github.event.repository.description }}
